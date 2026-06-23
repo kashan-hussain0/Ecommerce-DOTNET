@@ -1,0 +1,57 @@
+@model IEnumerable<Ecommerce_DOTNET.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary fw-bold">Category List</h2>
+        <a asp-action="Create" class="btn btn-success shadow-sm">
+            <i class="bi bi-plus-circle"></i> Create New
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width: 150px;">Image</th>
+                            <th>Category Name</th>
+                            <th style="width: 250px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.Image))
+                                    {
+                                        <img src="~/Images/@item.Image" class="img-thumbnail rounded shadow-sm" style="width: 70px; height: 70px; object-fit: cover;" alt="@item.CategoryName" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Images/no-image.png" class="img-thumbnail rounded shadow-sm" style="width: 70px; height: 70px; object-fit: cover;" alt="No Image" />
+                                    }
+                                </td>
+                                <td class="fw-semibold text-secondary">
+                                    @item.CategoryName
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning mx-1 rounded">Edit</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info mx-1 rounded">Details</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger mx-1 rounded">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

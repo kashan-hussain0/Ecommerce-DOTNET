@@ -19,10 +19,13 @@ namespace Ecommerce_DOTNET.Controllers
             this.context = context;
             Env = env;
         }
+
+        //create 
         public IActionResult Create()
         {
             return View();
         }
+
 
         [HttpPost]
         public IActionResult Create(Category category, IFormFile Image)
@@ -36,7 +39,14 @@ namespace Ecommerce_DOTNET.Controllers
             category.Image = fileName;
             this.context.Categories.Add(category);
             this.context.SaveChanges();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
+        }
+
+        //Read
+        public IActionResult Read()
+        {
+            var data = this.context.Categories.ToList();
+            return View(data);
         }
 
     }
