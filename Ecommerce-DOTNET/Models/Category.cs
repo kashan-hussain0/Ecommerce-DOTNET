@@ -2,6 +2,10 @@
 {
     public class Category
     {
-        public int MyProperty { get; set; }
+        public int Id { get; set; }
+        public String? CategoryName { get; set; }
+        public String? Image { get; set; }
+
+
     }
 }
