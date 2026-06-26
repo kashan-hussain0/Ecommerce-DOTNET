@@ -25,8 +25,6 @@ namespace Ecommerce_DOTNET.Controllers
         {
             return View();
         }
-
-
         [HttpPost]
         public IActionResult Create(Category category, IFormFile Image)
         {
@@ -39,7 +37,7 @@ namespace Ecommerce_DOTNET.Controllers
             category.Image = fileName;
             this.context.Categories.Add(category);
             this.context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Read");
         }
 
         //Read
@@ -49,5 +47,13 @@ namespace Ecommerce_DOTNET.Controllers
             return View(data);
         }
 
+        //Delete
+        public IActionResult Delete(int Id)
+        {
+            var modeldata = this.context.Categories.FirstOrDefault(x => x.Id == Id);
+            this.context.Categories.Remove(modeldata);
+            this.context.SaveChanges();
+            return RedirectToAction("Read");
+        }
     }
 }

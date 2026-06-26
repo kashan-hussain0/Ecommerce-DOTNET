@@ -44,7 +44,7 @@
                                     <div class="btn-group" role="group">
                                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning mx-1 rounded">Edit</a>
                                         <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info mx-1 rounded">Details</a>
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger mx-1 rounded">Delete</a>
+                                        <a onclick="return confirm('are you sure?')" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger mx-1 rounded">Delete</a>
                                     </div>
                                 </td>
                             </tr>
